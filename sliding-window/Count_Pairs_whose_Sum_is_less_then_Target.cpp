@@ -1,0 +1,24 @@
+#include<bits/stdc++.h>
+using namespace std ;
+
+// Problem : Count Pairs Whose Sum is Less than Target 
+// Platform : Leetcode 
+
+class Solution {
+public:
+    int countPairs(vector<int>& nums, int target) {
+        int count = 0 , n = nums.size() ;
+        sort ( nums.begin() , nums.end() ) ;
+        int l = 0 , r = n-1 ;
+        while ( l < r ) {
+            int sum = nums[l] + nums[r] ;
+            if ( sum >= target ) {
+                r -- ;
+            } else {
+                count = count + ( r - l ) ;
+                l ++ ;
+            }
+        }
+        return count ;
+    }
+}; 
