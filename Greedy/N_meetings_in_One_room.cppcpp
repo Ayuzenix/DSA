@@ -1,0 +1,34 @@
+#include<bits/stdc++.h>
+using namespace std ;
+
+// Problem : N meetings in one room 
+// Platform : TakeUForword
+
+class Solution{
+    public:
+    int maxMeetings(vector<int>& start, vector<int>& end){
+        vector<pair<int,int>>store ;
+        for ( int i = 0 ; i < start.size() ; i ++ ) {
+            store.push_back( { start[i] , end[i] } ) ;
+        }
+        sort( store.begin() , store.end() , []( auto & a , auto & b){
+            if ( a.second == b.second ) {
+                return b.first > a.first ;
+            }
+                return b.second > a.second ;
+        }) ;
+        int count = 0 , prev = -1 ;
+        for ( auto & it: store ) {
+            if( prev == -1 ) {
+                count ++ ;
+                prev = it.second ;
+            } else {
+                if ( it.first > prev ) {
+                    count ++ ;
+                    prev = it.second ;
+                }
+            }
+        }
+        return count ;
+    }
+};
