@@ -1,0 +1,21 @@
+#include<bits/stdc++.h>
+using namespace std ;
+
+// Problem : Subarrays Distinct Element Sum of Squares I
+// Platform : Platform 
+
+class Solution {
+public:
+    int sumCounts(vector<int>& nums) {
+        int n = nums.size() , sum = 0 ; 
+        for ( int i = 0 ; i < n ; i ++ ) {
+             unordered_map<int,int>mp ;
+             for ( int j = i ; j < n ; j ++ ) {
+                  mp[nums[j]] ++ ;
+                  long long x = ( long long )( mp.size() ) ;
+                  sum = sum + ( x * x ) ;
+             }
+        }
+        return sum ;
+    }
+};
